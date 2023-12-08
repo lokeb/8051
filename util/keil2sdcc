@@ -1,40 +1,26 @@
-#!/usr/bin/perl -w
+#!/usr/bin/python3
+import sys, os
+from pathlib import Path
+import re
 
-# keil2sdcc.pl
-# Scott Bronson
-# 22 June 2003
+paths=sys.argv[1:]
 
+"""
+for p in paths:
+  print(p, Path(p).is_dir() and 'dir', Path(p).is_file() and 'file')
+"""
 
-# usage (UNIX):
-#    perl keil2sdcc.pl < keil_header.h > sdcc_header.h
-# or
-#    perl keil2sdcc.pl keil_header.h > sdcc_header.h
-#
-# usage (Windows):
-#    perl keil2sdcc.pl keil_header.h > sdcc_header.h
-#
-#
-# keil_header.h and sdcc_header.h must not be the same file since
-# most shells overwrite the output file before opening the input file.
+def replaceSbit(matchObj):
+	if matchObj.group(3).find('^') > 0:
+		print('we have problem')
+	else: 
+		m = lambda index: matchObj.group(index)
+		return f"{m(1)}__sbit __at ({m(3)}) {m(2)};{m(4)}\n"
 
+def processLine(line):
+	line = re.sub(r'/\r/g', '', line)  	# remove DOS line endings if necessary
 
-# This script converts Keil-style header files to SDCC.  It tries to
-# be pedantic so don't be surprised if you need to munge it a bit to
-# get it to work.  On the other hand, it doesn't fully parse the C
-# file (for obvious reasons).
-
-# It takes the Keil header file either as an argument or on
-# stdin and it produces the output on stdout.
-
-# This script is inspired by keil2sdcc.pl by Bela Torok but a lot
-# more pedantic.
-
-use strict;
-
-while(<>) 
-{
-	s/\r//g;  	# remove DOS line endings if necessary
-
+	"""
 	# external register (kind of a weird format)
 	#
 	# in:  EXTERN xdata volatile BYTE GPIF_WAVE_DATA _AT_ 0xE400;
@@ -43,48 +29,47 @@ while(<>)
 	# $2: variable name
 	# $3: variable location
 	# $4: trailing comments, etc.
-
+	//TODO: SDCC compiler guide page 45
+	//Examples in Keil C51 folder
 	if(/^(\s*)EXTERN\s*xdata\s*volatile\s*BYTE\s*(\w+(?:\s*\[\s*\d+\s*\])?)\s+_AT_\s*([^;]+);(.*)$/) {
 		print "$1EXTERN xdata at $3 volatile BYTE $2;$4\n";
 		next;
 	}
+	"""
 
 	# sfr statement
 	#
 	# in:  sfr IOA = 0x80;
-	# out: __sfr __at 0x80 IOA;
+	# out: __sfr __at (0x80) IOA;
 	# $1: leading whitespace
 	# $2: variable name
 	# $3: variable location
 	# $4: trailing comments, etc.
-
-	if(/^(\s*)sfr\s*(\w+)\s*=\s*([^;]+);(.*)$/) {
-		print "$1__sfr __at $3 $2;$4\n";
-		next;
-	}
-
+	test = r'^(\s*)sfr\s*(\w+)\s*=\s*([^;]+);(.*)$'
+	if re.match(test, line):
+		return re.sub(test, r"\1__sfr __at \3 \2;\4\n", line)
+	
+	
 	# sbit statement
 	#
 	# in:  sbit SEL = 0x86+0;
-	# out: sbit at 0x86+0 SEL;
+	# out: sbit at (0x86+0) SEL;
 	# $1: leading whitespace
 	# $2: variable name
 	# $3: variable location
 	# $4: trailing comments, etc.
+	# square bracket implies anything other than ';'
+	test = r'^(\s*)sbit\s*(\w+)\s*=\s*([^;]+);(.*)$'
 
-	if(/^(\s*)sbit\s*(\w+)\s*=\s*([^;]+);(.*)$/) {
-		print "$1__sbit __at $3 $2;$4\n";
-		next;
-	}
-
-
+	if re.match(test, line):
+		return re.sub(test, replaceSbit, line)
 
 	# entire line is a C++ comment, output it unchanged.
-	if(/^(\s*)\/\/(.*)$/) {
-		print "$1//$2\n";
-		next;
-	}
-
+	test = '^(\s*)\/\/(.*)$'
+	if re.match(test, line):
+		return f'{line}\n'
+	
+	"""
 	# C comment, slurp lines until the close comment and output it unchanged.
 	if(/^(\s*)\/\*(.*)$/) {
 		my($ws,$cmt) = ($1,"$2\n");
@@ -93,20 +78,17 @@ while(<>)
 		print "$ws/*$cmt";
 		next;
 	}
+	"""
 
 	# preprocessor statement (whitespace followed by '#'), don't change
-	if(/^(\s*)\#(.*)$/) {
-		print "$1#$2\n";
-		next;
-	}
+	if re.match(r'^(\s*)\#(.*)$', line):
+		return f'{line}\n'
 
 	# blank line, don't change
-	if(/^(\s*)$/) {
-		print "\n";
-		next;
-	}
+	if re.match(r'^(\s*)$', line):
+		return "\n"
 
-	chomp;
-	die "Unconvertable line: \"$_\"\n";
-}
-
+line0="sfr KBPATN                 = 0xD5;     //Keypad Pattern"
+line="sbit IT0                   = TCON^0;"
+print(line)
+print(processLine(line))
