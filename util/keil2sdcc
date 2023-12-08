@@ -52,14 +52,14 @@ while(<>)
 	# sfr statement
 	#
 	# in:  sfr IOA = 0x80;
-	# out: sfr at 0x80 IOA;
+	# out: __sfr __at 0x80 IOA;
 	# $1: leading whitespace
 	# $2: variable name
 	# $3: variable location
 	# $4: trailing comments, etc.
 
 	if(/^(\s*)sfr\s*(\w+)\s*=\s*([^;]+);(.*)$/) {
-		print "$1sfr at $3 $2;$4\n";
+		print "$1__sfr __at $3 $2;$4\n";
 		next;
 	}
 
@@ -73,7 +73,7 @@ while(<>)
 	# $4: trailing comments, etc.
 
 	if(/^(\s*)sbit\s*(\w+)\s*=\s*([^;]+);(.*)$/) {
-		print "$1sbit at $3 $2;$4\n";
+		print "$1__sbit __at $3 $2;$4\n";
 		next;
 	}
 
