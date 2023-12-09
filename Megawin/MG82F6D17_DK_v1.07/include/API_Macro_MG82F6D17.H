@@ -848,7 +848,7 @@
 #define UART0_SetSPIClock_SYSCLKDiv4()		S0CFG=S0CFG|(URM0X3)
 #define UART0_SetSPIClock_SYSCLKDiv12()		S0CFG=S0CFG&(~URM0X3)
 
-// UART0 SPI-MASTER S0MI£¨MISO£©IO Port
+// UART0 SPI-MASTER S0MIÂ£Â¨MISOÂ£Â©IO Port
 #define UART0_SetMISOP16()					SFRPI=3;AUXR6=AUXR6&(~SnMIPS);SFRPI=0
 #define UART0_SetMISOP33()					SFRPI=3;AUXR6=AUXR6|SnMIPS;SFRPI=0
 
@@ -924,7 +924,7 @@
 #define UART1_SetSPIClock_SYSCLKDiv4()		SFRPI=1;S0CFG=S0CFG|(S1M0X3);SFRPI=0
 #define UART1_SetSPIClock_SYSCLKDiv12()		SFRPI=1;S0CFG=S0CFG&(~S1M0X3);SFRPI=0
 
-// UART1 SPI-MASTER S0MI£¨MISO£©IO Port
+// UART1 SPI-MASTER S0MIÂ£Â¨MISOÂ£Â©IO Port
 #define UART1_SetMISOP61()					SFRPI=3;AUXR6=AUXR6&(~SnMIPS);SFRPI=0
 #define UART1_SetMISOP47()					SFRPI=3;AUXR6=AUXR6|SnMIPS;SFRPI=0
 
@@ -990,8 +990,8 @@
 #define ADC_SetSampleHoldTime(x)		SFRPI=2;ADCFG2=x;SFRPI=0	// SHT=x
 
 // ADC Offset
-#define ADC_SetOffsetAdd(x)				SFRPI=1;ADCFG1=(ADCFG1&(~(0x1F)))|(x);SFRPI=0	// ADCÖµ+x (x=0~15)
-#define ADC_SetOffsetSub(x)				SFRPI=1;ADCFG1=(ADCFG1&(~(0x1F)))|((~x));SFRPI=0	// ADCÖµ-x (x=1~16)
+#define ADC_SetOffsetAdd(x)				SFRPI=1;ADCFG1=(ADCFG1&(~(0x1F)))|(x);SFRPI=0	// ADCÃ–Âµ+x (x=0~15)
+#define ADC_SetOffsetSub(x)				SFRPI=1;ADCFG1=(ADCFG1&(~(0x1F)))|((~x));SFRPI=0	// ADCÃ–Âµ-x (x=1~16)
 
 // ADC Window In/Out
 #define ADC_SetWindow_WithIn()			SFRPI=0x04;ADCFG4=ADCFG4&(~ADWM0);SFRPI=0
