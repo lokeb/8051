@@ -83,14 +83,14 @@ __sfr __at 0x87 PCON0;     //Power Control 0
 
 __sfr __at 0x88 TCON;     //Timer Control
 // (bits in TCON)
-__sbit __at TCON^7 TF1;
-__sbit __at TCON^6 TR1;
-__sbit __at TCON^5 TF0;
-__sbit __at TCON^4 TR0;
-__sbit __at TCON^3 IE1;
-__sbit __at TCON^2 IT1;
-__sbit __at TCON^1 IE0;
-__sbit __at TCON^0 IT0;
+__sbit __at (0x8f) TF1;
+__sbit __at (0x8e) TR1;
+__sbit __at (0x8d) TF0;
+__sbit __at (0x8c) TR0;
+__sbit __at (0x8b) IE1;
+__sbit __at (0x8a) IT1;
+__sbit __at (0x89) IE0;
+__sbit __at (0x88) IT0;
 
 __sfr __at 0x89 TMOD;     //Timer Mode
 // (bits in TMOD)
@@ -123,11 +123,11 @@ __sfr __at 0x8F XRPS;     //XRAM Page Select
 
 __sfr __at 0x90 P1;     //Port 1
 // (bits in P1)
-__sbit __at P1^7 P17;
-__sbit __at P1^6 P16;
-__sbit __at P1^5 P15;
-__sbit __at P1^1 P11;
-__sbit __at P1^0 P10;
+__sbit __at (0x97) P17;
+__sbit __at (0x96) P16;
+__sbit __at (0x95) P15;
+__sbit __at (0x91) P11;
+__sbit __at (0x90) P10;
 
 __sfr __at 0x91 P1M0;     //P1 Mode Register 0
 // (bits in P1M0)
@@ -263,25 +263,25 @@ __sfr __at 0x97 PCON1;     //Power Control 1
 
 __sfr __at 0x98 S0CON;     //Serial 0 Control
 // (bits in S0CON)
-__sbit __at S0CON^7 SM00_FE;
-__sbit __at S0CON^6 SM10;
-__sbit __at S0CON^5 SM20;
-__sbit __at S0CON^4 REN0;
-__sbit __at S0CON^3 TB80;
-__sbit __at S0CON^2 RB80;
-__sbit __at S0CON^1 TI0;
-__sbit __at S0CON^0 RI0;
+__sbit __at (0x9f) SM00_FE;
+__sbit __at (0x9e) SM10;
+__sbit __at (0x9d) SM20;
+__sbit __at (0x9c) REN0;
+__sbit __at (0x9b) TB80;
+__sbit __at (0x9a) RB80;
+__sbit __at (0x99) TI0;
+__sbit __at (0x98) RI0;
 
 __sfr __at 0x98 S1CON;     //Serial 1 Control
 // (bits in S1CON)
-__sbit __at S1CON^7 SM01;
-__sbit __at S1CON^6 SM11;
-__sbit __at S1CON^5 SM21;
-__sbit __at S1CON^4 REN1;
-__sbit __at S1CON^3 TB81;
-__sbit __at S1CON^2 RB81;
-__sbit __at S1CON^1 TI1;
-__sbit __at S1CON^0 RI1;
+__sbit __at (0x9f) SM01;
+__sbit __at (0x9e) SM11;
+__sbit __at (0x9d) SM21;
+__sbit __at (0x9c) REN1;
+__sbit __at (0x9b) TB81;
+__sbit __at (0x9a) RB81;
+__sbit __at (0x99) TI1;
+__sbit __at (0x98) RI1;
 
 __sfr __at 0x99 S0BUF;     //Serial 0 Buffer
 
@@ -328,8 +328,8 @@ __sfr __at 0x9D S0CFG1;     //S0 Configuration 1
 
 __sfr __at 0xA0 P2;     //Port 2
 // (bits in P2)
-__sbit __at P2^4 P24;
-__sbit __at P2^2 P22;
+__sbit __at (0xa4) P24;
+__sbit __at (0xa2) P22;
 
 __sfr __at 0xA1 AUXR0;     //Auxiliary Register 0
 // (bits in AUXR0)
@@ -444,14 +444,14 @@ __sfr __at 0xA7 EIP2H;     //Ext. INT Priority 2 High
 
 __sfr __at 0xA8 IE;     //Interrupt Enable
 // (bits in IE)
-__sbit __at IE^7 EA;
-__sbit __at IE^6 EDMA;
-__sbit __at IE^5 ET2;
-__sbit __at IE^4 ES0;
-__sbit __at IE^3 ET1;
-__sbit __at IE^2 EX1;
-__sbit __at IE^1 ET0;
-__sbit __at IE^0 EX0;
+__sbit __at (0xaf) EA;
+__sbit __at (0xae) EDMA;
+__sbit __at (0xad) ET2;
+__sbit __at (0xac) ES0;
+__sbit __at (0xab) ET1;
+__sbit __at (0xaa) EX1;
+__sbit __at (0xa9) ET0;
+__sbit __at (0xa8) EX0;
 
 __sfr __at 0xA9 SADDR;     //Slave Address
 
@@ -494,11 +494,11 @@ __sfr __at 0xAF EIP1H;     //Ext. INT Priority 1 High
 
 __sfr __at 0xB0 P3;     //Port 3
 // (bits in P3)
-__sbit __at P3^5 P35;
-__sbit __at P3^4 P34;
-__sbit __at P3^3 P33;
-__sbit __at P3^1 P31;
-__sbit __at P3^0 P30;
+__sbit __at (0xb5) P35;
+__sbit __at (0xb4) P34;
+__sbit __at (0xb3) P33;
+__sbit __at (0xb1) P31;
+__sbit __at (0xb0) P30;
 
 __sfr __at 0xB1 P3M0;     //P3 Mode Register 0
 // (bits in P3M0)
@@ -563,13 +563,13 @@ __sfr __at 0xB7 IP0H;     //Interrupt Priority 0 High
 
 __sfr __at 0xB8 IP0L;     //Interrupt Priority Low
 // (bits in IP0L)
-__sbit __at IP0L^6 PX2L;
-__sbit __at IP0L^5 PT2L;
-__sbit __at IP0L^4 PSL;
-__sbit __at IP0L^3 PT1L;
-__sbit __at IP0L^2 PX1L;
-__sbit __at IP0L^1 PT0L;
-__sbit __at IP0L^0 PX0L;
+__sbit __at (0xbe) PX2L;
+__sbit __at (0xbd) PT2L;
+__sbit __at (0xbc) PSL;
+__sbit __at (0xbb) PT1L;
+__sbit __at (0xba) PX1L;
+__sbit __at (0xb9) PT0L;
+__sbit __at (0xb8) PX0L;
 
 __sfr __at 0xB9 SADEN;     //Slave Address Mask
 
@@ -621,10 +621,10 @@ __sfr __at 0xBF CKCON1;     //Clock Control 1
 
 __sfr __at 0xC0 XICON;     //External INT Control
 // (bits in XICON)
-__sbit __at XICON^3 INT2H;
-__sbit __at XICON^2 EX2;
-__sbit __at XICON^1 IE2;
-__sbit __at XICON^0 IT2;
+__sbit __at (0xc3) INT2H;
+__sbit __at (0xc2) EX2;
+__sbit __at (0xc1) IE2;
+__sbit __at (0xc0) IT2;
 
 __sfr __at 0xC1 XICFG;     //Ext. INT. Configured
 // (bits in XICFG)
@@ -783,45 +783,45 @@ __sfr __at 0xC7 CKCON0;     //Clock Control 0
 
 __sfr __at 0xC8 T2CON;     //Timer 2 Control Reg.
 // (bits in T2CON)
-__sbit __at T2CON^7 TF2;
-__sbit __at T2CON^6 EXF2;
-__sbit __at T2CON^5 RCLK_TF2L;
-__sbit __at T2CON^4 TCLK_TL2IE;
-__sbit __at T2CON^3 EXEN2;
-__sbit __at T2CON^2 TR2;
-__sbit __at T2CON^1 C_T2;
-__sbit __at T2CON^0 CP_RL2;
+__sbit __at (0xcf) TF2;
+__sbit __at (0xce) EXF2;
+__sbit __at (0xcd) RCLK_TF2L;
+__sbit __at (0xcc) TCLK_TL2IE;
+__sbit __at (0xcb) EXEN2;
+__sbit __at (0xca) TR2;
+__sbit __at (0xc9) C_T2;
+__sbit __at (0xc8) CP_RL2;
 
 __sfr __at 0xC8 T3CON;     //Timer 3 Control Reg.
 // (bits in T3CON)
-__sbit __at T3CON^7 TF3;
-__sbit __at T3CON^6 EXF3;
-__sbit __at T3CON^5 TF3L;
-__sbit __at T3CON^4 TL3IE;
-__sbit __at T3CON^3 EXEN3;
-__sbit __at T3CON^2 TR3;
-__sbit __at T3CON^1 C_T3;
-__sbit __at T3CON^0 CP_RL3;
+__sbit __at (0xcf) TF3;
+__sbit __at (0xce) EXF3;
+__sbit __at (0xcd) TF3L;
+__sbit __at (0xcc) TL3IE;
+__sbit __at (0xcb) EXEN3;
+__sbit __at (0xca) TR3;
+__sbit __at (0xc9) C_T3;
+__sbit __at (0xc8) CP_RL3;
 
 __sfr __at 0xC8 T5CON;     //Timer 5 Control Reg.
 // (bits in T5CON)
-__sbit __at T5CON^7 TF5;
-__sbit __at T5CON^5 T5CKS1;
-__sbit __at T5CON^4 T5CKS0;
-__sbit __at T5CON^3 T5IE;
-__sbit __at T5CON^2 TR5;
-__sbit __at T5CON^1 T5GAT1;
-__sbit __at T5CON^0 T5GAT0;
+__sbit __at (0xcf) TF5;
+__sbit __at (0xcd) T5CKS1;
+__sbit __at (0xcc) T5CKS0;
+__sbit __at (0xcb) T5IE;
+__sbit __at (0xca) TR5;
+__sbit __at (0xc9) T5GAT1;
+__sbit __at (0xc8) T5GAT0;
 
 __sfr __at 0xC8 T6CON;     //Timer 6 Control Reg.
 // (bits in T6CON)
-__sbit __at T6CON^7 TF6;
-__sbit __at T6CON^5 T6CKS1;
-__sbit __at T6CON^4 T6CKS0;
-__sbit __at T6CON^3 T6IE;
-__sbit __at T6CON^2 TR6;
-__sbit __at T6CON^1 T6GAT1;
-__sbit __at T6CON^0 T6GAT0;
+__sbit __at (0xcf) TF6;
+__sbit __at (0xcd) T6CKS1;
+__sbit __at (0xcc) T6CKS0;
+__sbit __at (0xcb) T6IE;
+__sbit __at (0xca) TR6;
+__sbit __at (0xc9) T6GAT1;
+__sbit __at (0xc8) T6GAT0;
 
 __sfr __at 0xC9 T2MOD;     //Timer 2 mode Reg.
 // (bits in T2MOD)
@@ -883,14 +883,14 @@ __sfr __at 0xCF CHRL;     //CH Reload register
 
 __sfr __at 0xD0 PSW;     //Program Status Word
 // (bits in PSW)
-__sbit __at PSW^7 CY;
-__sbit __at PSW^6 AC;
-__sbit __at PSW^5 F0;
-__sbit __at PSW^4 RS1;
-__sbit __at PSW^3 RS0;
-__sbit __at PSW^2 OV;
-__sbit __at PSW^1 F1;
-__sbit __at PSW^0 P;
+__sbit __at (0xd7) CY;
+__sbit __at (0xd6) AC;
+__sbit __at (0xd5) F0;
+__sbit __at (0xd4) RS1;
+__sbit __at (0xd3) RS0;
+__sbit __at (0xd2) OV;
+__sbit __at (0xd1) F1;
+__sbit __at (0xd0) P;
 
 __sfr __at 0xD1 SIADR;     //TWI0 Address Reg.
 // (bits in SIADR)
@@ -925,14 +925,14 @@ __sfr __at 0xD7 KBMASK;     //Keypad Int. Mask
 
 __sfr __at 0xD8 CCON;     //PCA Control Reg.
 // (bits in CCON)
-__sbit __at CCON^7 CF;
-__sbit __at CCON^6 CR;
-__sbit __at CCON^5 CCF5;
-__sbit __at CCON^4 CCF4;
-__sbit __at CCON^3 CCF3;
-__sbit __at CCON^2 CCF2;
-__sbit __at CCON^1 CCF1;
-__sbit __at CCON^0 CCF0;
+__sbit __at (0xdf) CF;
+__sbit __at (0xde) CR;
+__sbit __at (0xdd) CCF5;
+__sbit __at (0xdc) CCF4;
+__sbit __at (0xdb) CCF3;
+__sbit __at (0xda) CCF2;
+__sbit __at (0xd9) CCF1;
+__sbit __at (0xd8) CCF0;
 
 __sfr __at 0xD9 CMOD;     //PCA Mode Reg.
 // (bits in CMOD)
@@ -1064,9 +1064,9 @@ __sfr __at 0xE7 ISPCR;     //ISP Control Register
 
 __sfr __at 0xE8 P4;     //Port 4
 // (bits in P4)
-__sbit __at P4^7 P47;
-__sbit __at P4^5 P45;
-__sbit __at P4^4 P44;
+__sbit __at (0xef) P47;
+__sbit __at (0xed) P45;
+__sbit __at (0xec) P44;
 
 __sfr __at 0xE9 CL;     //PCA base timer Low
 
@@ -1167,8 +1167,8 @@ __sfr __at 0xF7 PCAPWM5;     //PCA PWM5 Mode
 
 __sfr __at 0xF8 P6;     //Port 6
 // (bits in P6)
-__sbit __at P6^1 P61;
-__sbit __at P6^0 P60;
+__sbit __at (0xf9) P61;
+__sbit __at (0xf8) P60;
 
 __sfr __at 0xF9 CH;     //PCA base timer High
 
