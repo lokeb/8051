@@ -1,4 +1,4 @@
-# SDCC 8052 Tools and Headers for Megawin Chips
+# SDCC 8051/8052 Tools and Headers for Megawin Chips
 This project focuses on 8052 development on Linux using Megawin chips.
 
 ## Megawin SFRs
