@@ -27,27 +27,55 @@
 #define NULL	0
 #endif
 
+typedef __bit         BitDef;
 
 #ifndef BYTE
+typedef unsigned char	BYTE;
+typedef unsigned short	WORD;
+typedef unsigned long	LWORD;
 #endif
 
 #ifndef uchar
+typedef unsigned char       uchar;
+typedef unsigned short int  ushort;
+typedef unsigned int  		uint;
+typedef unsigned char *     puchar;
+typedef unsigned short int * pushort;
+typedef unsigned int *  puint;
 #endif
 
 
 #ifndef INT8
+typedef unsigned char       INT8;
+typedef unsigned short int      INT16;
+typedef unsigned long       INT32;
 #endif
 
 #ifndef u8
 
+typedef long  s32;
+typedef int s16;
+typedef char  s8;
 
+typedef unsigned long  u32;
+typedef unsigned short int u16;
+typedef unsigned char  u8;
 
+typedef unsigned long * pu32;
+typedef unsigned short int * pu16;
+typedef unsigned char * pu8;
 
 #endif
 
 #ifndef uint8_t
 
+typedef long  int32_t;
+typedef int int16_t;
+typedef char  int8_t;
 
+typedef unsigned long  uint32_t;
+typedef unsigned short int uint16_t;
+typedef unsigned char  uint8_t;
 
 
 #endif
@@ -56,10 +84,40 @@
 #define    HIBYTE( V1 )     ((BYTE)((V1) >> 8))
 #define    LOBYTE( V1 )     ((BYTE)((V1) & 0xFF))
 
+typedef struct
+{
+	u8 BHigh;
+	u8 BLow;  //���λ;
+}WByteDef;
+
+typedef struct
+{
+	u8 BHigh;
+	u8 BMHigh;
+	u8 BMLow;
+	u8 BLow;  //���λ;
+}DWByteDef;
+typedef struct
+{
+	u16 WHigh;
+	u16 WLow;  //���λ;
+}DWWordDef;
 
 
+typedef union
+{
+	u8 BUF[2];
+	WByteDef B;
+    u16 W;
+}WordTypeDef;
 
-  
+typedef union
+{
+	u8 BUF[4];
+	DWByteDef B;
+	DWWordDef W;
+	u32 DW;
+}DWordTypeDef;
 
 #define BITALL		0xFF
 #define	BIT0		0x01
@@ -353,6 +411,3 @@
 #define B11111111 0xFF
 
 #endif /* _TYPE_H */
-
-
-
